@@ -51,4 +51,10 @@ header {
         color: var(--color-brand);
         cursor: pointer;
     }
+
+        h1 {
+            font-size: 2.4rem;
+            color: var(--content-primary);
+            line-height: 3.2rem;
+        }
 }
