@@ -6,7 +6,7 @@ function addItem() {
 
     const item = {
     name: itemName,
-    chacked: false
+    checked: false
     }
 
     items.push(item)
@@ -17,13 +17,13 @@ function addItem() {
 }
 
 function showItemsList() {
-    const sectionList = document.querySelector(".List")
+    const sectionList = document.getElementById("list")
 
     sectionList.innerHTML = ""
 
     items.sort((itemA, itemB) => Number(itemA.checked) - Number(itemB.checked))
 
-    item.map((item, index) => {
+    items.map((item, index) => {
         sectionList.innerHTML += `
         <div class="item">
         <div>
@@ -33,7 +33,7 @@ function showItemsList() {
             </div>
             <label for="item-${index}">${item.name}</label>
         </div>
-        <button>
+        <button onclick="removeItem('${item.name}')">
             <img src="./assets/trash-icon.svg" alt="trash icon">
         </button>
     `
@@ -43,5 +43,15 @@ function showItemsList() {
 function checkItem(itemName) {
     const item = items.find((item) => item.name === itemName)
     item.checked = !item.checked
+    showItemsList()
+}
+
+function removeItem(itemName) {
+    const itemIndex = items.findIndex((item) => item.name === itemName)
+    
+    if (itemIndex !== -1) {
+        items.splice(itemIndex, 1)
+    }
+
     showItemsList()
 }
