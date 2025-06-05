@@ -13,30 +13,30 @@ function addItem() {
 
     document.querySelector("#item").value = ""
 
-    showItemsList()
+       showItemsList()
 }
 
 function showItemsList() {
-    const sectionList = document.querySelector(".list")
+    const sectionList = document.querySelector(".List")
 
     sectionList.innerHTML = ""
 
-    items.sort((a, b) => Number(a.checked) - Number(b.checked))
+    items.sort((itemA, itemB) => Number(itemA.checked) - Number(itemB.checked))
 
-    items.map((item, index) => {
+    item.map((item, index) => {
         sectionList.innerHTML += `
-              <div class="item">
-               <div>
-                  <input type="checkbox" name="list" id="item-${index}">
-                <div class="custom-checkbox">
-          <img src="./assets/checked.svg" alt="checked">
-                </div>
-                <label for="item-${index}">${item.name}</label>
-               </div>
-               <button>
-                <img src="./assets/trash-icon.svg" alt="trash">
-               </button>
-           </div>  `
+        <div class="item">
+        <div>
+            <input type="checkbox" name="list" id="item-${index}">
+            <div class="custom-checkbox">
+                <img src="./assets/checked.svg" alt="checked">
+            </div>
+            <label for="item-${index}">${item.name}</label>
+        </div>
+        <button>
+            <img src="./assets/trash-icon.svg" alt="trash icon">
+        </button>
+    `
     })
 }
 
